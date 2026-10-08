@@ -1,22 +1,25 @@
 import google.generativeai as genai
 import streamlit as st
 
+st.set_page_config(page_title="AI Astrologer", page_icon="✨", layout="centered")
+
 st.title("✨ AI Astrologer - भविष्य जानें ✨")
 
-# यूजर से सवाल पूछने का बॉक्स
-user_query = st.text_input("अपना सवाल यहाँ लिखें:")
+user_query = st.text_input(
+    "अपना सवाल यहाँ लिखें:",
+    placeholder="जैसे: मेरा आने वाला समय कैसा रहेगा?",
+)
 
 if st.button("भविष्य जानें ✨"):
   if user_query:
     try:
-      # यहाँ अपनी Gemini API Key डालें (या Streamlit secrets का इस्तेमाल करें)
-      # अपनी खुद की Gemini API Key यहाँ रख लें
-      genai.configure(api_key="YOUR_GEMINI_API_KEY")
+      # आपकी API Key यहाँ जोड़ दी गई है
+      genai.configure(
+          api_key="AQ.Ab8RN6JIaJ7bB1qKTszmV9x_Y-FrtZirvgFLZAkXH_48vjshtw"
+      )
 
-      # Gemini मॉडल सेट करें
       model = genai.GenerativeModel("gemini-1.5-flash")
 
-      # ज्योतिष के रूप में जवाब देने के लिए प्रॉम्प्ट
       prompt = (
           f"You are an expert AI astrologer. Give a detailed, positive, and"
           f" inspiring astrological prediction for the following query: {user_query}"
@@ -36,4 +39,4 @@ if st.button("भविष्य जानें ✨"):
       )
   else:
     st.warning("कृपया पहले अपना सवाल लिखें!")
-      
+    
